@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+    box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column1 {
+    float: left;
+    width: 30%;
+    padding: 10px;
+    border-radius: 1em;
+    height: 400px; /* Should be removed. Only for demonstration */
+}
+.column2 {
+    float: left;
+    width: 70%;
+    padding: 10px;
+    border-radius: 1em;
+    height: 400px; /* Should be removed. Only for demonstration */
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.collapsible {
+    background-color: #f1f1f1;
+    color: blue;
+	font-weight: bold;
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+	border-radius: 1em;
+}
+
+.active, .collapsible:hover {
+    background-color: aqua;
+}
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+</style>
+</head>
+<body>
+
+<h2 align='center' style='color:red;background-color:#f0f0f0'>Critical Incident Alert</h2>
+
+<div class="row">
+  <div class="column1" style="background-color:#f0f0f0;">
+    <h3>Keys</h3>
+    	<table>
+    		<tr>
+            	<td height='50'><font face='Helvetica Neue' size='4' color='black'>Incident</font></td>
+                <td><font face='Helvetica Neue' size='4' color='blue'>{{incident}}</font></td>
+            </tr>
+			<tr>
+            	<td height='50'><font face='Helvetica Neue' size='4' color='black'>Priority</font></td>
+                <td><font face='Helvetica Neue' size='4' color='red'>P1</font></td>
+            </tr>
+			<tr>
+            	<td height='50'><font face='Helvetica Neue' size='4' color='black'>Opened</font></td>
+                <td><font face='Helvetica Neue' size='4' color='blue'>{{opentime}}</font></td>
+            </tr>
+            <tr>
+            	<td height='50'><font face='Helvetica Neue' size='4' color='black'>Market</font></td>
+                <td><font face='Helvetica Neue' size='4' color='blue'>US</font></td>
+            </tr>
+			<tr>
+            	<td height='50'><font face='Helvetica Neue' size='4' color='black'>Application</font></td>
+                <td><font face='Helvetica Neue' size='4' color='blue'>McDelivery</font></td>
+            </tr>
+            <tr>
+            	<td height='50'><font face='Helvetica Neue' size='4' color='black'>State</font></td>
+                <td><font face='Helvetica Neue' size='4' color='blue'>{{state}}</font></td>
+            </tr>
+		</table>
+  </div>
+  <div class="column2" style="background-color:#fff9f4;">
+    <h3>Details</h3>
+        <table>
+    		<tr>
+            	<td height='100' valign="top"><font face='Helvetica Neue' size='3' color='black'><strong>Description</strong><br>{{description}}</font></td>
+            </tr>
+            <tr>
+            	<td height='100' valign="top"><font face='Helvetica Neue' size='3' color='black'><strong>Impact</strong><br>McDelivery ordering is down for the store from 5:12PM CDT. A L1 ticket has been raised on incident by SIM with an auto assigned priority of P1.</font></td>
+            </tr>
+		</table>
+  </div> 
+  <div>
+		<table>
+			<tr>
+				<td>Contact</td>
+				<td bgcolor="#e0f0f0"><strong>Pooja Kunder</strong></td>
+				<td>email</td>
+				<td bgcolor="#e0f0f0"><strong>pooja.kunder@capgemini.com</strong></td>
+				<td>Cell#</td>
+				<td bgcolor="#e0f0f0"><strong>650 233-1144</strong></td>
+			</tr>
+		</table>
+  </div>
+</div>
+<button class="collapsible">Know More</button>
+<div class="content">
+  <img src="kibana.jpg" width=1000px height=1000px>
+</div>
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+</script>
+</body>
+</html>
